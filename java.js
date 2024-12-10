@@ -1,3 +1,102 @@
+//////////////////////Login//////////////////////////
+<%@page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Đăng Nhập</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .login-container {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px 0px #888888;
+            text-align: center;
+            width: 300px;
+        }
+        h2 {
+            color: #ff3333;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            font-size: 14px;
+            color: #555555;
+            margin: 10px 0 5px;
+        }
+        input[type="text"], input[type="password"] {
+            width: 100%;
+            padding: 8px;
+            margin: 5px 0;
+            border: 1px solid #cccccc;
+            border-radius: 4px;
+        }
+        input[type="submit"], input[type="button"] {
+            background-color: #ff3333;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 48%;
+            margin-top: 10px;
+        }
+        input[type="submit"]:hover, input[type="button"]:hover {
+            background-color: #cc0000;
+        }
+        .button-group {
+            display: flex;
+            justify-content: space-between;
+        }
+        .error {
+            color: red;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h2>ĐĂNG NHẬP</h2>
+        <form method="post">
+            <label>Tên đăng nhập:</label>
+            <input type="text" name="username" required>
+
+            <label>Mật khẩu:</label>
+            <input type="password" name="password" required>
+
+            <div class="button-group">
+                <input type="submit" name="action" value="Đăng nhập">
+                <input type="button" value="Thoát" onclick="window.location.href='Login.jsp';">
+            </div>
+        </form>
+
+        <%
+            String username = request.getParameter("username");
+            String password = request.getParameter("password");
+            String action = request.getParameter("action");
+
+            if ("Đăng nhập".equals(action)) {
+                if ("DamBaThang-21203100054".equals(username) && "123".equals(password)) {
+                    response.sendRedirect("ThemTV.jsp?username=" + java.net.URLEncoder.encode(username, "UTF-8"));
+                } else {
+                    out.println("<p class='error'>Bạn đã nhập sai thông tin về UserName hoặc Password</p>");
+                }
+            }
+        %>
+    </div>
+</body>
+</html>
+
 /////////////////////De1_TimkiemSP//////////////////
 package model;
 
